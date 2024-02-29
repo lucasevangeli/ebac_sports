@@ -5,26 +5,20 @@ import Produto from '../components/Produto'
 import * as S from './styles'
 import { RootReducer } from '../store'
 
-const ProdutosComponent = () => {
-  const favoritos = useSelector((state: RootReducer) => state.favorito.itens)
+type ProdutoProps = {
+  produto: ProdutoType[]
+}
 
-  const produtoEstaNosFavoritos = (produto: ProdutoType) => {
-    const produtoId = produto.id
-    const IdsDosFavoritos = favoritos.map((f) => f.id)
-
-    return IdsDosFavoritos.includes(produtoId)
-  }
-
+const ProdutosComponent = ({ produto }: ProdutoProps) => {
+  useSelector((state: RootReducer) => state.carrinho.itens)
   return (
     <>
       <S.Produtos>
-        {produtos.map((produto) => (
+        {produto.map((produto) => (
           <Produto
-            estaNosFavoritos={produtoEstaNosFavoritos(produto)}
             key={produto.id}
             produto={produto}
-            favoritar={favoritos}
-            aoComprar={produto}
+            estaNosFavoritos={false}
           />
         ))}
       </S.Produtos>
