@@ -1,24 +1,21 @@
-import { useSelector } from 'react-redux'
-import { Produto as ProdutoType } from '../App'
 import Produto from '../components/Produto'
 
 import * as S from './styles'
-import { RootReducer } from '../store'
+import { useGetProdutosQuery } from '../services/api'
 
-type ProdutoProps = {
-  produto: ProdutoType[]
-}
+const ProdutosComponent = () => {
+  const { data: produto, isLoading } = useGetProdutosQuery()
 
-const ProdutosComponent = ({ produto }: ProdutoProps) => {
-  useSelector((state: RootReducer) => state.carrinho.itens)
+  if (isLoading) return <h2>Carregando...</h2>
+
   return (
     <>
       <S.Produtos>
-        {produto.map((produto) => (
+        {produto?.map((produto) => (
           <Produto
             key={produto.id}
             produto={produto}
-            estaNosFavoritos={false}
+            estaNosFavoritos={produto.favorito}
           />
         ))}
       </S.Produtos>

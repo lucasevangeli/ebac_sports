@@ -18,11 +18,11 @@ const ProdutoComponent = ({ produto, estaNosFavoritos }: Props) => {
   const dispatch = useDispatch()
 
   const handleFavoritar = () => {
-    dispatch(adicionarFavorito(produto)) // Chama a ação de favoritar com o produto
+    dispatch(adicionarFavorito(produto))
   }
 
   const handleAdicionarAoCarrinho = () => {
-    dispatch(adicionar(produto)) // Chama a ação de adicionar ao carrinho com o produto
+    dispatch(adicionar(produto))
   }
 
   return (

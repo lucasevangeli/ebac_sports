@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import Produtos from './containers/Produtos'
 
@@ -7,6 +6,7 @@ import { store } from './store'
 import { Provider } from 'react-redux'
 
 export type Produto = {
+  favorito: boolean
   id: number
   nome: string
   preco: number
@@ -14,20 +14,20 @@ export type Produto = {
 }
 
 function App() {
-  const [produtos, setProdutos] = useState<Produto[]>([])
+  // const [produtos, setProdutos] = useState<Produto[]>([])
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/ebac_sports')
-      .then((res) => res.json())
-      .then((res) => setProdutos(res))
-  }, [])
+  // useEffect(() => {
+  //   fetch('https://fake-api-tau.vercel.app/api/ebac_sports')
+  //     .then((res) => res.json())
+  //     .then((res) => setProdutos(res))
+  // }, [])
 
   return (
     <Provider store={store}>
       <GlobalStyle />
       <div className="container">
         <Header />
-        <Produtos produto={produtos} />
+        <Produtos />
       </div>
     </Provider>
   )
