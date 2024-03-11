@@ -7,7 +7,7 @@ import { RootReducer } from '../../store'
 
 const Header = () => {
   const itens = useSelector((state: RootReducer) => state.carrinho.itens)
-  const favoritos = useSelector((state: RootReducer) => state.favorito.itens)
+  const favoritos = useSelector((state: RootReducer) => state.favoritos.itens)
 
   const valorTotal = itens.reduce((acc, item) => {
     acc += item.preco

@@ -12,11 +12,7 @@ const ProdutosComponent = () => {
     <>
       <S.Produtos>
         {produto?.map((produto) => (
-          <Produto
-            key={produto.id}
-            produto={produto}
-            estaNosFavoritos={produto.favorito}
-          />
+          <Produto key={produto.id} produto={produto} estaNosFavoritos={true} />
         ))}
       </S.Produtos>
     </>
